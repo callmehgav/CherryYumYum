@@ -2,94 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-
-    <!-- Angular frontend location -->
-    <SpaRoot>..\webapp\</SpaRoot>
-
-    <!--
-      Defaults to building Angular during a normal local
-      dotnet publish.
-
-      Docker overrides this with:
-      -p:SkipSpaBuild=true
-    -->
-    <SkipSpaBuild>false</SkipSpaBuild>
   </PropertyGroup>
 
-
   <ItemGroup>
-    <PackageReference
-      Include="Swashbuckle.AspNetCore"
-      Version="6.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
   </ItemGroup>
-
-
-  <!-- =====================================================
-       ANGULAR PRODUCTION BUILD
-       -----------------------------------------------------
-       Used for normal/local dotnet publish operations.
-
-       Railway/Docker builds Angular separately in the
-       Node build stage and passes SkipSpaBuild=true.
-       ===================================================== -->
-
-  <Target
-    Name="PublishAngular"
-    AfterTargets="ComputeFilesToPublish"
-    Condition="'$(SkipSpaBuild)' != 'true'">
-
-    <Message
-      Importance="high"
-      Text="Building Angular production application..." />
-
-
-    <!-- Install exactly from package-lock.json -->
-    <Exec
-      WorkingDirectory="$(SpaRoot)"
-      Command="npm ci" />
-
-
-    <!--
-      package.json already defines the production build:
-      ng build --configuration production
-    -->
-    <Exec
-      WorkingDirectory="$(SpaRoot)"
-      Command="npm run build" />
-
-
-    <!-- ===================================================
-         ADD ANGULAR OUTPUT TO .NET PUBLISH
-         =================================================== -->
-
-    <ItemGroup>
-
-      <DistFiles
-        Include="$(SpaRoot)dist\webapp\browser\**\*" />
-
-      <ResolvedFileToPublish
-        Include="@(DistFiles->'%(FullPath)')"
-        Exclude="@(ResolvedFileToPublish)">
-
-        <RelativePath>
-          wwwroot\%(RecursiveDir)%(Filename)%(Extension)
-        </RelativePath>
-
-        <CopyToPublishDirectory>
-          PreserveNewest
-        </CopyToPublishDirectory>
-
-        <ExcludeFromSingleFile>
-          true
-        </ExcludeFromSingleFile>
-
-      </ResolvedFileToPublish>
-
-    </ItemGroup>
-
-  </Target>
 
 </Project>
