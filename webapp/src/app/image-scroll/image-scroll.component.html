@@ -1,0 +1,10 @@
+
+<section class="scrolling-images" id="scrollingImages">
+  <div class="sticky-wrapper">
+    <div class="image-track" id="imageTrack">
+      @for (image of images; track image) {
+        <img [src]="image" />
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,88 @@
+.hero {
+  height: 100vh;
+
+  background-color: var(--color-background);
+  background-image: url('../../../assets/pics/hero.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem;
+
+  text-align: center;
+
+  transition: all 0.6s ease;
+
+  &.scrolled {
+    transform: translateY(-100px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+
+.logo-wrapper {
+  margin-bottom: 0.5rem;
+
+  img {
+    width: 150px;
+    height: auto;
+
+    filter:
+      drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+
+    transition:
+      transform 0.3s ease;
+  }
+}
+
+
+.text-block {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .logo-wrapper {visibility: hidden;}
+  .hero {
+    height: 100svh;
+    min-height: 100svh;
+
+    background-color: var(--color-background);
+
+    /*
+     * Fill the full phone height.
+     * Width becomes wider than the viewport,
+     * so we control which horizontal area is visible.
+     */
+    background-size: auto 100%;
+
+    /*
+     * Pull the right side of the artwork into view.
+     * This keeps the skull/skeleton visible.
+     */
+    background-position: 88% center;
+
+    background-repeat: no-repeat;
+
+    padding: 1.5rem;
+  }
+}

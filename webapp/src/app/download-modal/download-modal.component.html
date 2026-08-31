@@ -1,0 +1,14 @@
+<div class="modal-backdrop" (click)="close()"></div>
+
+<div class="modal">
+  <button class="close-button" (click)="close()">✕</button>
+
+  <h2>Download Programs</h2>
+
+  <ul class="file-list">
+    <li>
+      {{ fileName }}
+      <button (click)="download()">Download</button>
+    </li>
+  </ul>
+</div>

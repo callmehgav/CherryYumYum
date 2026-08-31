@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- Angular frontend location -->
+    <SpaRoot>..\webapp\</SpaRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+  </ItemGroup>
+
+
+  <!-- =====================================================
+       ANGULAR PRODUCTION BUILD
+
+       Only runs when the .NET application is published.
+       Normal backend builds do NOT rebuild Angular.
+       ===================================================== -->
+
+  <Target
+    Name="PublishAngular"
+    AfterTargets="ComputeFilesToPublish">
+
+    <Message
+      Importance="high"
+      Text="Building Angular production application..." />
+
+    <Exec
+      WorkingDirectory="$(SpaRoot)"
+      Command="npm install" />
+
+    <Exec
+      WorkingDirectory="$(SpaRoot)"
+      Command="npm run build -- --configuration production" />
+
+
+    <!--
+      IMPORTANT:
+      This ItemGroup is intentionally inside the target.
+
+      Angular has already finished building before MSBuild
+      determines which hashed files exist.
+    -->
+    <ItemGroup>
+
+      <DistFiles
+        Include="$(SpaRoot)dist\webapp\browser\**\*" />
+
+      <ResolvedFileToPublish
+        Include="@(DistFiles->'%(FullPath)')"
+        Exclude="@(ResolvedFileToPublish)">
+
+        <RelativePath>
+          wwwroot\%(RecursiveDir)%(Filename)%(Extension)
+        </RelativePath>
+
+        <CopyToPublishDirectory>
+          PreserveNewest
+        </CopyToPublishDirectory>
+
+        <ExcludeFromSingleFile>
+          true
+        </ExcludeFromSingleFile>
+
+      </ResolvedFileToPublish>
+
+    </ItemGroup>
+
+  </Target>
+
+</Project>

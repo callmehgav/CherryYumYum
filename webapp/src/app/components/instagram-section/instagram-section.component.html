@@ -1,0 +1,63 @@
+<section class="instagram-carousel">
+  <div class="header">
+    <h2>
+      Follow us on Instagram!
+      <a
+        href="https://www.instagram.com/callmehgav/?hl=en"
+        target="_blank"
+        rel="noopener noreferrer"
+        >
+        &#64;callmehgav
+      </a>
+    </h2>
+  </div>
+  <div class="grid">
+    @for (item of mediaItems.slice(0, itemsToShow); track item) {
+      @if (item.media_type === 'IMAGE' || item.media_type === 'CAROUSEL_ALBUM') {
+        <a
+          [href]="item.permalink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="grid-item"
+          >
+          <img [src]="item.media_url" [alt]="item.caption" loading="lazy" />
+        </a>
+      }
+      @if (item.media_type === 'VIDEO') {
+        <a
+          href="javascript:void(0)"
+          (click)="playVideo(item.id, $event)"
+          class="grid-item video-item"
+          >
+          @if (!playingItems.has(item.id)) {
+            <img
+              [src]="item.thumbnail_url || 'assets/video-placeholder.jpg'"
+              [alt]="item.caption"
+              loading="lazy"
+              />
+              <div class="play-overlay">&#9658;</div>
+            } @else {
+              <video
+                [src]="item.media_url"
+                controls
+                autoplay
+                muted
+                playsinline
+                preload="metadata"
+                style="width: 100%; height: 100%; object-fit: cover;"
+              ></video>
+            }
+          </a>
+        }
+      }
+    </div>
+
+    @if (itemsToShow < mediaItems.length) {
+      <button
+        class="load-more-button"
+        (click)="loadMore()"
+        >
+        Load More
+      </button>
+    }
+  </section>

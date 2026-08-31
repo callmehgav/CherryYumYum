@@ -1,0 +1,33 @@
+.scrolling-images {
+    height: 100vh; /* room to scroll down */
+    position: relative;
+  }
+  .sticky-wrapper {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 2rem;
+    overflow: hidden;
+    width: 100%; /* optional but often helpful */
+  }
+  
+  .image-track {
+    display: flex;
+    gap: 2rem;
+    transform: translateX(0);
+    will-change: transform;
+  }
+  
+  
+  .image-track img {
+    width: 250px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  }
+  

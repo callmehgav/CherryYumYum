@@ -1,0 +1,61 @@
+<section class="contact-me" id="contact">
+  <div class="contact-card">
+    <h2>Let’s Rock</h2>
+
+
+    <div class="contact-options">
+      <a
+        class="email-button"
+href="mailto:cherryyumyumband@gmail.com?subject=Booking%20Inquiry%20-%20Cherry%20Yum%20Yum&amp;body=Hi%20Cherry%20Yum%20Yum%2C%0D%0A%0D%0AI%27d%20like%20to%20get%20in%20touch%20about%20booking%20the%20band.%0D%0A%0D%0AEvent%20or%20venue%3A%0D%0A%5BName%20of%20event%20or%20venue%5D%0D%0A%0D%0ADate%3A%0D%0A%5BRequested%20date%5D%0D%0A%0D%0ALocation%3A%0D%0A%5BCity%20%2F%20Venue%5D%0D%0A%0D%0ADetails%3A%0D%0A%5BTell%20us%20a%20little%20about%20the%20show%5D%0D%0A%0D%0AThanks%2C%0D%0A%5BYour%20name%5D"        >
+        Email Us Directly
+      </a>
+
+      <span class="contact-divider">or</span>
+
+      <span class="form-instruction">
+        complete the form below
+      </span>
+    </div>
+    <form (ngSubmit)="submitForm()" #contactForm="ngForm">
+      <label>Name *</label>
+      <div class="name-fields">
+        <input type="text" name="firstName" [(ngModel)]="formData.firstName" placeholder="First" required />
+        <input type="text" name="lastName" [(ngModel)]="formData.lastName" placeholder="Last" />
+      </div>
+
+      <label>Email *</label>
+      <input type="email" name="email" [(ngModel)]="formData.email" placeholder="Your Email" required />
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" [(ngModel)]="formData.phone" placeholder="Your Phone Number" />
+
+      <label>Message *</label>
+      <textarea name="message" [(ngModel)]="formData.message" placeholder="Your Message" rows="5" required></textarea>
+
+      <button type="submit" [disabled]="loading">
+        {{ loading ? 'Sending...' : 'Send Message' }}
+      </button>
+
+      <!-- Field validation -->
+      @if (fieldError) {
+        <div class="error-message">
+          Please fill in your first name and email before sending.
+        </div>
+      }
+
+      <!-- API failure -->
+      @if (apiError) {
+        <div class="error-message">
+          Something went wrong while sending your message. Please try again later.
+        </div>
+      }
+
+      <!-- Success -->
+      @if (success) {
+        <div class="success-message">
+          Message sent successfully!
+        </div>
+      }
+    </form>
+  </div>
+</section>

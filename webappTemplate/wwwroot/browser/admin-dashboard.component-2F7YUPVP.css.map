@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/admin-dashboard/admin-dashboard.component.scss"],
+  "sourcesContent": [".admin-dashboard {\r\n  background: #1e1e1e;\r\n  color: #fff;\r\n  padding: 1.5rem;\r\n  border-radius: 8px;\r\n  max-width: 320px;\r\n  margin: auto;\r\n  text-align: center;\r\n}\r\n\r\n.admin-dashboard p {\r\n  font-size: 1rem;\r\n  margin: 0.5rem 0;\r\n}\r\n\r\nbutton {\r\n  background: #e76f51;\r\n  border: none;\r\n  color: white;\r\n  padding: 0.5rem 1rem;\r\n  margin-top: 1rem;\r\n  cursor: pointer;\r\n  border-radius: 4px;\r\n}\r\n\r\nbutton:hover {\r\n  background: #f28465;\r\n}\r\n"],
+  "mappings": "AAAA,CAAA,gBACE,WAAA,QACA,MAAA,KAFF,QAGE,OAHF,cAIE,IACA,UAAA,MALF,OAME,KACA,WAAA,OAGF,CAVA,gBAUA,EACE,UAAA,KAXF,OAYE,MAAA,EAGF,OACE,WAAA,QACA,OAAA,KACA,MAAA,KAlBF,QAmBE,MAAA,KACA,WAAA,KACA,OAAA,QArBF,cAsBE,IAGF,MAAA,OACE,WAAA",
+  "names": []
+}

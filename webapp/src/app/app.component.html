@@ -1,0 +1,43 @@
+@if (!showHeader) {
+  <app-header
+    [showAdminButton]="isAdminLoggedIn"
+    (adminToggle)="isAdminLoggedIn ? toggleAdminDashboard() : toggleAdminPanel()">
+  </app-header>
+}
+
+<!-- Admin login -->
+@if (isAdminPanelOpen && !isAdminDashboardVisible) {
+  <app-admin-login
+    (loginSuccess)="handleAdminLoginSuccess()">
+  </app-admin-login>
+}
+
+<!-- Admin dashboard -->
+@if (isAdminDashboardVisible) {
+  <app-admin-dashboard
+    [insights]="adminInsights"
+    (closeDashboard)="isAdminDashboardVisible = false">
+  </app-admin-dashboard>
+}
+
+<!-- =======================================================
+     PAGE CONTENT
+     ======================================================= -->
+
+<div class="page-shell">
+
+
+  <!-- Actual site -->
+  <div class="page-content">
+    <app-hero></app-hero>
+
+    <app-link-tree></app-link-tree>
+
+    <app-about-section></app-about-section>
+
+    <app-contact-me></app-contact-me>
+
+    <app-footer></app-footer>
+  </div>
+
+</div>

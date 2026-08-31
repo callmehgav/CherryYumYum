@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/hero/hero.component.css"],
+  "sourcesContent": [".hero {\r\n  height: 100vh;\r\n  background-size: cover; /* slight zoom, no black bars */\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n  padding: 2rem;\r\n  text-align: center;\r\n  transition: all 0.6s ease;\r\n\r\n  &.scrolled {\r\n    transform: translateY(-100px) scale(0.95);\r\n    opacity: 0;\r\n    pointer-events: none;\r\n  }\r\n}\r\n\r\n  \r\n  .logo-wrapper {\r\n    margin-bottom: 0.5rem;\r\n  \r\n    img {\r\n      width: 150px;\r\n      height: auto;\r\n      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));\r\n      transition: transform 0.3s ease;\r\n    }\r\n  }\r\n  \r\n  .text-block {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 0.5rem;\r\n  \r\n  }\r\n  "],
+  "mappings": "AAAA,CAAC,KACC,OAAQ,MACR,gBAAiB,MACjB,QAAS,KACT,eAAgB,OAChB,gBAAiB,OACjB,YAAa,OANf,QAOW,KACT,WAAY,OACZ,WAAY,IAAI,IAAK,IAOvB,CAhBA,CAAC,IAWE,CAAC,SACA,UAAW,WAAW,QAAQ,MAAM,KACpC,QAAS,EACT,eAAgB,IAClB,CAIA,CAAC,aACC,cAAe,KAQjB,CATA,CAAC,aAGC,IACE,MAAO,MACP,OAAQ,KACR,OAAQ,YAAY,EAAE,IAAI,IAAI,KAAK,CAAC,CAAE,CAAC,CAAE,CAAC,CAAE,KAC5C,WAAY,UAAU,IAAK,IAC7B,CAGF,CAAC,WACC,QAAS,KACT,eAAgB,OAChB,IAAK,KAEP",
+  "names": []
+}

@@ -1,0 +1,638 @@
+/* =========================================================
+   CHERRY YUM YUM
+   SOCIAL LINKS
+   ========================================================= */
+
+.link-tree,
+.links-section {
+  position: relative;
+
+  padding:
+    clamp(4rem, 8vw, 7rem)
+    var(--container-padding);
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   SHELL
+   ========================================================= */
+
+.links-shell {
+  width: 100%;
+  max-width: 950px;
+
+  margin-inline: auto;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.links-header {
+  max-width: 620px;
+
+  margin-bottom:
+    clamp(2rem, 5vw, 3.5rem);
+
+
+  .eyebrow {
+    margin-bottom: 0.5rem;
+  }
+
+
+  h2 {
+    margin-bottom: 1rem;
+
+    color:
+      var(--color-primary);
+  }
+
+
+  p {
+    max-width: 520px;
+
+    color:
+      var(--color-text-muted);
+  }
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.links-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+}
+
+
+/* =========================================================
+   LINK CARD
+   ========================================================= */
+
+.link-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    auto minmax(0, 1fr) auto;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  min-height: 92px;
+
+  padding:
+    1rem 1.25rem;
+
+  overflow: hidden;
+
+  color:
+    var(--color-primary);
+
+  background:
+    rgba(255, 248, 237, 0.72);
+
+  border:
+    1.5px solid var(--color-primary);
+
+  border-radius:
+    var(--radius-lg);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  isolation: isolate;
+
+  transition:
+    transform var(--transition-normal),
+    background var(--transition-normal),
+    color var(--transition-normal),
+    box-shadow var(--transition-normal);
+
+
+  /*
+   * Normal cards get the Cherry Yum Yum
+   * red slide-up treatment.
+   */
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+      var(--color-primary);
+
+    transform:
+      translateY(102%);
+
+    transition:
+      transform var(--transition-normal);
+  }
+
+
+  /*
+   * Keep card content above pseudo-elements.
+   */
+  > * {
+    position: relative;
+
+    z-index: 1;
+  }
+
+
+  &:hover {
+    color:
+      var(--color-cream);
+
+    transform:
+      translateY(-3px);
+
+    box-shadow:
+      0 12px 30px
+      rgba(221, 21, 34, 0.14);
+
+
+    &::before {
+      transform:
+        translateY(0);
+    }
+
+
+    .link-icon {
+      background:
+        var(--color-cream);
+
+      border-color:
+        var(--color-cream);
+    }
+
+
+    .link-arrow {
+      transform:
+        translate(3px, -3px);
+    }
+  }
+}
+
+
+/* =========================================================
+   IMAGE CARDS
+   ---------------------------------------------------------
+   Instagram / YouTube / Venmo / Bandcamp
+   ========================================================= */
+
+.link-card.image-card {
+  background-color:
+    var(--color-surface);
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  background-repeat:
+    no-repeat;
+
+  color:
+    var(--color-cream);
+
+
+  /*
+   * Instead of sliding solid red over the image,
+   * this becomes a permanent dark/red wash.
+   */
+  &::before {
+    transform:
+      none;
+
+    background:
+      linear-gradient(
+        90deg,
+        rgba(54, 22, 21, 0.84) 0%,
+        rgba(91, 26, 29, 0.67) 55%,
+        rgba(221, 21, 34, 0.28) 100%
+      );
+
+    transition:
+      background var(--transition-normal);
+  }
+
+
+  .link-copy {
+
+    strong {
+      color:
+        var(--color-cream);
+    }
+
+
+    small {
+      color:
+        var(--color-cream);
+
+      opacity:
+        0.85;
+    }
+  }
+
+
+  .link-arrow {
+    color:
+      var(--color-cream);
+  }
+
+
+  &:hover {
+
+    &::before {
+      transform:
+        none;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(116, 21, 26, 0.88) 0%,
+          rgba(170, 20, 29, 0.72) 55%,
+          rgba(221, 21, 34, 0.48) 100%
+        );
+    }
+  }
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.link-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+
+  flex:
+    0 0 52px;
+
+  overflow: hidden;
+
+  color:
+    var(--color-primary);
+
+  background:
+    var(--color-cream);
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius:
+    50%;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+
+
+  /*
+   * Explicit constraints prevent SVG/PNG icons
+   * from blowing up to their intrinsic dimensions.
+   */
+  img {
+    display: block;
+
+    width: 25px;
+    height: 25px;
+
+    max-width: 25px;
+    max-height: 25px;
+
+    object-fit:
+      contain;
+  }
+}
+
+
+/* =========================================================
+   TEXT-BASED ICONS
+   ========================================================= */
+
+.text-icon {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 1.5rem;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  color:
+    var(--color-primary);
+}
+
+
+.venmo-icon {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-style:
+    italic;
+
+  font-weight:
+    900;
+}
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+.link-copy {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.15rem;
+
+  min-width: 0;
+
+
+  strong {
+    overflow: hidden;
+
+    color:
+      inherit;
+
+    font-family:
+      var(--font-primary);
+
+    font-size:
+      1.05rem;
+
+    font-weight:
+      700;
+
+    line-height:
+      1.25;
+
+    text-overflow:
+      ellipsis;
+
+    white-space:
+      nowrap;
+  }
+
+
+  small {
+    overflow: hidden;
+
+    color:
+      inherit;
+
+    opacity:
+      0.7;
+
+    font-family:
+      var(--font-primary);
+
+    font-size:
+      0.8rem;
+
+    line-height:
+      1.35;
+
+    text-overflow:
+      ellipsis;
+
+    white-space:
+      nowrap;
+  }
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.link-arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size:
+    1.4rem;
+
+  line-height:
+    1;
+
+  flex-shrink:
+    0;
+
+  transition:
+    transform var(--transition-fast);
+}
+
+
+/* =========================================================
+   FOOTER LOGO
+   ========================================================= */
+
+.links-footer {
+  display: flex;
+
+  justify-content: center;
+
+  margin-top:
+    clamp(2.5rem, 5vw, 4rem);
+}
+
+
+.links-logo {
+  display: block;
+
+  width: 100px;
+  height: 100px;
+
+  object-fit:
+    contain;
+
+  opacity:
+    0.95;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .links-section {
+    padding:
+      3.5rem 1.25rem;
+  }
+
+
+  .links-header {
+    margin-bottom:
+      2rem;
+  }
+
+
+  .links-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .link-card {
+    min-height:
+      82px;
+
+    padding:
+      0.85rem 1rem;
+
+    gap:
+      0.85rem;
+  }
+
+
+  .link-icon {
+    width:
+      46px;
+
+    height:
+      46px;
+
+    flex-basis:
+      46px;
+
+
+    img {
+      width:
+        22px;
+
+      height:
+        22px;
+
+      max-width:
+        22px;
+
+      max-height:
+        22px;
+    }
+  }
+
+
+  .text-icon {
+    font-size:
+      1.3rem;
+  }
+
+
+  .link-copy {
+
+    strong {
+      font-size:
+        1rem;
+    }
+
+
+    small {
+      font-size:
+        0.75rem;
+    }
+  }
+
+
+  .link-arrow {
+    font-size:
+      1.2rem;
+  }
+
+
+  .links-logo {
+    width:
+      85px;
+
+    height:
+      85px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .links-section {
+    padding-inline:
+      1rem;
+  }
+
+
+  .link-card {
+    grid-template-columns:
+      auto minmax(0, 1fr) auto;
+
+    padding:
+      0.75rem;
+
+    gap:
+      0.7rem;
+  }
+
+
+  .link-icon {
+    width:
+      42px;
+
+    height:
+      42px;
+
+    flex-basis:
+      42px;
+  }
+
+
+  .link-copy {
+
+    strong {
+      font-size:
+        0.95rem;
+    }
+
+
+    small {
+      font-size:
+        0.7rem;
+    }
+  }
+
+}

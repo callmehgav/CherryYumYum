@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/about/about-section.component.css"],
+  "sourcesContent": [".about-section {\r\n  padding: 2rem;\r\n  background: #fffaf4;\r\n  text-align: center;\r\n\r\n  .about-container {\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    gap: 1rem;\r\n    max-width: 600px;\r\n    margin: 0 auto;\r\n\r\n    @media (min-width: 600px) {\r\n      flex-direction: row;\r\n      align-items: flex-start;\r\n    }\r\n  }\r\n\r\n  .about-image {\r\n    width: 200px;\r\n    height: 200px;\r\n    object-fit: cover;\r\n    border-radius: 8px;\r\n  }\r\n\r\n  .about-bio {\r\n    max-width: 400px;\r\n    text-align: left;\r\n\r\n    h2 {\r\n      font-size: 1.5rem;\r\n      margin-bottom: 0.5rem;\r\n      color: #222;\r\n    }\r\n\r\n    p {\r\n      font-size: 1rem;\r\n      color: #444;\r\n      line-height: 1.5;\r\n    }\r\n  }\r\n}\r\n"],
+  "mappings": "AAAA,CAAC,cAAD,QACW,KACT,WAAY,QACZ,WAAY,MAuCd,CA1CA,CAAC,cAKC,CAAC,gBACC,QAAS,KACT,eAAgB,OAChB,YAAa,OACb,IAAK,KACL,UAAW,MAVf,OAWY,EAAE,IAMZ,CAJE,OAAO,UAAY,OAbvB,CAAC,cAKC,CAAC,gBASG,eAAgB,IAChB,YAAa,WACf,CAhBJ,CAAC,cAmBC,CAAC,YACC,MAAO,MACP,OAAQ,MACR,WAAY,MAtBhB,cAuBmB,GACjB,CAxBF,CAAC,cA0BC,CAAC,UACC,UAAW,MACX,WAAY,IAad,CAzCF,CAAC,cA0BC,CAAC,UAIC,GACE,UAAW,OACX,cAAe,MACf,MAAO,IACT,CAlCJ,CAAC,cA0BC,CAAC,UAUC,EACE,UAAW,KACX,MAAO,KACP,YAAa,GACf",
+  "names": []
+}

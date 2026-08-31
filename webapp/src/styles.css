@@ -1,0 +1,559 @@
+/* =========================================================
+   GLOBAL DESIGN SYSTEM
+   ---------------------------------------------------------
+   Cherry Yum Yum
+   Vintage / Indie / Garage Rock
+   ========================================================= */
+
+:root {
+
+  /* =======================================================
+     BRAND
+     ======================================================= */
+
+  --color-primary: #dd1522;
+  --color-primary-hover: #f01d2a;
+
+  --color-accent: #dd1522;
+  --color-accent-hover: #f01d2a;
+
+  --color-cream: #fbf3e7;
+  --color-cream-dark: #f3e7d7;
+
+
+  /* =======================================================
+     BACKGROUNDS
+     ======================================================= */
+
+  --color-background: #fbf3e7;
+
+  --color-surface: #fff8ed;
+
+  --color-surface-muted: #f5eadb;
+
+  --color-page-muted: #b1aba2;
+
+
+  /* =======================================================
+     TEXT
+     ======================================================= */
+
+  --color-text: #2b2623;
+
+  --color-text-muted: #756d66;
+
+  --color-heading: #dd1522;
+
+
+  /* =======================================================
+     BORDERS
+     ======================================================= */
+
+  --color-border: rgba(221, 21, 34, 0.32);
+
+  --color-border-strong: #dd1522;
+
+
+  /* =======================================================
+     TYPOGRAPHY
+     ======================================================= */
+
+  --font-primary:
+    'Lora',
+    Georgia,
+    serif;
+
+  --font-display:
+    'Cooper Black',
+    'Lora',
+    Georgia,
+    serif;
+
+
+  /* =======================================================
+     LAYOUT
+     ======================================================= */
+
+  --container-width: 1200px;
+
+  --container-padding:
+    clamp(1.25rem, 4vw, 3rem);
+
+
+  /* =======================================================
+     RADIUS
+     ======================================================= */
+
+  --radius-sm: 0.65rem;
+
+  --radius-md: 0.9rem;
+
+  --radius-lg: 1.1rem;
+
+  --radius-xl: 1.5rem;
+
+
+  /* =======================================================
+     SHADOWS
+     ======================================================= */
+
+  --shadow-sm:
+    0 2px 8px rgba(50, 40, 30, 0.05);
+
+  --shadow-md:
+    0 10px 30px rgba(50, 40, 30, 0.08);
+
+  --shadow-lg:
+    0 20px 50px rgba(50, 40, 30, 0.12);
+
+
+  /* =======================================================
+     ANIMATION
+     ======================================================= */
+
+  --transition-fast: 150ms ease;
+
+  --transition-normal: 250ms ease;
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+html {
+  margin: 0;
+  padding: 0;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    var(--color-primary)
+    var(--color-cream-dark);
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+
+  min-height: 100vh;
+
+  overflow-x: clip;
+
+  font-family: var(--font-primary);
+
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+
+  background:
+    var(--color-background);
+
+  color:
+    var(--color-text);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+
+  color: #da0c1a;
+
+  font-family: var(--font-display);
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.015em;
+}
+
+
+h1 {
+  font-size:
+    clamp(3rem, 7vw, 5.75rem);
+}
+
+
+h2 {
+  font-size:
+    clamp(2.25rem, 5vw, 4rem);
+}
+
+
+h3 {
+  font-size:
+    clamp(1.65rem, 3vw, 2.5rem);
+}
+
+
+h4 {
+  font-size: 1.35rem;
+}
+
+
+p {
+  margin: 0;
+  
+  font-family: var(--font-primary);
+
+  font-size:
+    clamp(1rem, 1.2vw, 1.125rem);
+
+  font-weight: 400;
+
+  line-height: 1.7;
+
+  color: #da0c1a;
+}
+
+
+small {
+  font-size: 0.875rem;
+}
+
+
+strong {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: inherit;
+
+  text-decoration: none;
+
+  transition:
+    color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+
+a:hover {
+  color: var(--color-primary);
+}
+
+
+/* =========================================================
+   MEDIA
+   ========================================================= */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+
+  max-width: 100%;
+}
+
+
+img {
+  height: auto;
+}
+
+
+/* =========================================================
+   FORMS / BUTTONS
+   ========================================================= */
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+
+button {
+  border: 0;
+
+  cursor: pointer;
+}
+
+
+input,
+textarea,
+select {
+  color: var(--color-text);
+
+  background:
+    var(--color-surface);
+
+  border:
+    1px solid var(--color-border);
+}
+
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+
+textarea {
+  resize: vertical;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+  outline:
+    3px solid rgba(221, 21, 34, 0.35);
+
+  outline-offset: 3px;
+}
+
+
+::selection {
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-cream);
+}
+
+
+/* =========================================================
+   SHARED LAYOUT
+   ========================================================= */
+
+.container {
+  width: 100%;
+
+  max-width: var(--container-width);
+
+  margin-inline: auto;
+
+  padding-inline:
+    var(--container-padding);
+}
+
+
+.section {
+  padding-block:
+    clamp(4rem, 8vw, 7rem);
+}
+
+
+.section-sm {
+  padding-block:
+    clamp(2.5rem, 5vw, 4rem);
+}
+
+
+/* =========================================================
+   SHARED TEXT UTILITIES
+   ========================================================= */
+
+.eyebrow {
+  margin-bottom: 0.75rem;
+
+  font-family: var(--font-primary);
+
+  font-size: 0.8rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  color: var(--color-primary);
+}
+
+
+.text-muted {
+  color:
+    var(--color-text-muted);
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+
+/* =========================================================
+   SURFACES
+   ========================================================= */
+
+.surface {
+  background:
+    var(--color-surface);
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius:
+    var(--radius-lg);
+}
+
+
+.surface-outline {
+  background:
+    transparent;
+
+  border:
+    1.5px solid var(--color-border-strong);
+
+  border-radius:
+    var(--radius-lg);
+}
+
+
+/* =========================================================
+   BUTTON BASE
+   ========================================================= */
+
+.btn {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 3.25rem;
+
+  padding:
+    0.8rem 1.5rem;
+
+  border:
+    1.5px solid var(--color-primary);
+
+  border-radius:
+    var(--radius-md);
+
+  background:
+    transparent;
+
+  color:
+    var(--color-primary);
+
+  font-family:
+    var(--font-primary);
+
+  font-weight: 600;
+
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+.btn:hover {
+  background:
+    var(--color-primary);
+
+  color:
+    var(--color-cream);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+  visibility: hidden;
+  height: 10px;
+}
+
+
+::-webkit-scrollbar-corner {
+  background:
+    var(--color-background);
+}
+
+
+::-webkit-scrollbar-track {
+  background:
+    var(--color-cream-dark);
+}
+
+
+::-webkit-scrollbar-thumb {
+  border:
+    3px solid var(--color-cream-dark);
+
+  border-radius:
+    999px;
+
+  background: transparent;
+
+  background-clip:
+    content-box;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background:
+    var(--color-primary-hover);
+
+  background-clip:
+    content-box;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+
+}

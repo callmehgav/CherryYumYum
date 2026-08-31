@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/image-scroll/image-scroll.component.css"],
+  "sourcesContent": [".scrolling-images {\r\n    height: 100vh; /* room to scroll down */\r\n    position: relative;\r\n  }\r\n  .sticky-wrapper {\r\n    position: sticky;\r\n    top: 0;\r\n    height: 100vh;\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: flex-start;\r\n    padding: 0 2rem;\r\n    overflow: hidden;\r\n    width: 100%; /* optional but often helpful */\r\n  }\r\n  \r\n  .image-track {\r\n    display: flex;\r\n    gap: 2rem;\r\n    transform: translateX(0);\r\n    will-change: transform;\r\n  }\r\n  \r\n  \r\n  .image-track img {\r\n    width: 250px;\r\n    height: 500px;\r\n    object-fit: cover;\r\n    border-radius: 8px;\r\n    flex-shrink: 0;\r\n    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);\r\n  }\r\n  \r\n"],
+  "mappings": "AAAA,CAAC,iBACG,OAAQ,MACR,SAAU,QACZ,CACA,CAAC,eACC,SAAU,OACV,IAAK,EACL,OAAQ,MACR,QAAS,KACT,YAAa,OACb,gBAAiB,WAVrB,QAWa,EAAE,KACX,SAAU,OACV,MAAO,IACT,CAEA,CAAC,YACC,QAAS,KACT,IAAK,KACL,UAAW,UAAW,GACtB,YAAa,SACf,CAGA,CARC,YAQY,IACX,MAAO,MACP,OAAQ,MACR,WAAY,MA3BhB,cA4BmB,IACf,YAAa,EACb,WAAY,EAAE,EAAE,KAAK,SACvB",
+  "names": []
+}
