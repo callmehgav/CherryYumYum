@@ -1,43 +1,65 @@
-# Stage 1: Build Angular app
+# =========================================================
+# STAGE 1 — BUILD ANGULAR
+# =========================================================
+
 FROM node:22.23.2 AS node_builder
 
 WORKDIR /app/webapp
 
-# Copy package.json and install dependencies
+# Install dependencies first for better Docker caching
 COPY webapp/package*.json ./
-RUN npm install
 
-# Copy the rest of the Angular app and build
-COPY webapp/ .
-RUN npm run build -- --configuration production
+RUN npm ci
 
-# Stage 2: Build .NET app
+# Copy Angular application
+COPY webapp/ ./
+
+# package.json already specifies production configuration
+RUN npm run build
+
+
+# =========================================================
+# STAGE 2 — BUILD / PUBLISH .NET
+# =========================================================
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
 WORKDIR /app
 
-# Copy solution and csproj, restore
-COPY *.sln .
+# Restore dependencies separately for better caching
+COPY *.sln ./
 COPY webappTemplate/*.csproj ./webappTemplate/
+
 RUN dotnet restore
 
-# Copy the rest of the project
+# Copy entire application
 COPY . .
 
-# Copy built Angular files into the ASP.NET Core wwwroot
-COPY --from=node_builder /app/webapp/dist/webapp/browser ./webappTemplate/wwwroot/
+# Copy Angular production build into ASP.NET wwwroot
+COPY --from=node_builder \
+  /app/webapp/dist/webapp/browser \
+  ./webappTemplate/wwwroot/
 
-# Publish the .NET app
-RUN dotnet publish -c Release -o out
+# Publish ASP.NET application
+RUN dotnet publish \
+  ./webappTemplate/webappTemplate.csproj \
+  -c Release \
+  -o /app/out \
+  --no-restore
 
-# Stage 3: Runtime image
+
+# =========================================================
+# STAGE 3 — RUNTIME
+# =========================================================
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 
 WORKDIR /app
 
-# Copy published output from build stage
-COPY --from=build /app/out .
+COPY --from=build /app/out ./
 
-ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 
-ENTRYPOINT ["dotnet", "gs.dll"]
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "webappTemplate.dll"]
