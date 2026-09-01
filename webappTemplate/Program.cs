@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Net.WebSockets;
 using System.Text.Json;
 using webappTemplate;
 using webappTemplate.Services;
@@ -73,36 +72,6 @@ public class Program
          */
         app.UseStaticFiles();
 
-
-        // =====================================================
-        // WEBSOCKETS
-        // =====================================================
-
-        app.UseWebSockets();
-
-        var conduit = new Conduit();
-
-        app.Use(async (context, next) =>
-        {
-            if (context.Request.Path == "/ws")
-            {
-                if (context.WebSockets.IsWebSocketRequest)
-                {
-                    var webSocket =
-                        await context.WebSockets.AcceptWebSocketAsync();
-
-                    await conduit.ListenWebSocketAsync(webSocket);
-                }
-                else
-                {
-                    context.Response.StatusCode = 400;
-                }
-
-                return;
-            }
-
-            await next();
-        });
 
 
         // =====================================================
