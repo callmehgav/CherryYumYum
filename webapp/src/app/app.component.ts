@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { WebSocketService } from './services/websocket.service';
 import { Router, NavigationEnd, RouterModule } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit {
   adminInsights = {};
   cdr: any;
 
-  constructor(private webSocketService: WebSocketService, private router: Router) {}
+  constructor( private router: Router) {}
 
   ngOnInit(): void {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -50,8 +49,6 @@ export class AppComponent implements OnInit {
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
 
-    this.webSocketService.connect();
-    this.webSocketService.connectionStatus.subscribe(status => this.isConnected = status);
 
     this.router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((event) => {
@@ -81,7 +78,4 @@ export class AppComponent implements OnInit {
     this.cdr.detectChanges(); // force refresh
   }
 
-  closeConnection() {
-    this.webSocketService.close();
-  }
 }
