@@ -1,5 +1,12 @@
+/* =========================================================
+   CHERRY YUM YUM
+   FOOTER
+   ========================================================= */
+
 .site-footer {
-  padding: 3rem 2rem 1.5rem;
+  padding:
+    3rem 2rem
+    1.5rem;
 
   background:
     linear-gradient(
@@ -12,6 +19,10 @@
     1px solid var(--color-border);
 }
 
+
+/* =========================================================
+   TOP
+   ========================================================= */
 
 .footer-top {
   display: flex;
@@ -29,6 +40,10 @@
 }
 
 
+/* =========================================================
+   BRAND
+   ========================================================= */
+
 .footer-brand {
   display: flex;
 
@@ -38,22 +53,61 @@
 }
 
 
-.footer-logo {
-  width: 64px;
-  height: 64px;
+/* =========================================================
+   GAV'S NEXUS G
+   ---------------------------------------------------------
+   Uses g.png as a mask so it inherits Cherry Yum Yum red.
+   ========================================================= */
 
-  object-fit: contain;
+.footer-logo {
+  display: block;
+
+  width: 58px;
+  height: 58px;
 
   flex-shrink: 0;
+
+  background:
+    var(--color-primary);
+
+  mask:
+    url('/assets/pics/g.png')
+    center / contain
+    no-repeat;
+
+  -webkit-mask:
+    url('/assets/pics/g.png')
+    center / contain
+    no-repeat;
+
+  opacity:
+    0.85;
+
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+
+
+  &:hover {
+    opacity:
+      1;
+
+    transform:
+      scale(1.08);
+  }
 }
 
+
+/* =========================================================
+   BRAND TEXT
+   ========================================================= */
 
 .footer-brand-text {
   display: flex;
 
   flex-direction: column;
 
-  gap: 0.25rem;
+  gap: 0.3rem;
 
 
   .footer-name {
@@ -90,13 +144,36 @@
       0.75rem;
 
     letter-spacing:
-      0.08em;
+      0.05em;
 
-    text-transform:
-      uppercase;
+
+    a {
+      color:
+        var(--color-primary);
+
+      font-weight:
+        700;
+
+      text-decoration:
+        none;
+
+      transition:
+        color var(--transition-fast),
+        opacity var(--transition-fast);
+
+
+      &:hover {
+        color:
+          var(--color-primary-hover);
+      }
+    }
   }
 }
 
+
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
 
 .footer-links {
   display: flex;
@@ -168,6 +245,10 @@
 }
 
 
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
 .footer-divider {
   max-width:
     1100px;
@@ -187,6 +268,10 @@
     );
 }
 
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
 
 .footer-bottom {
   display: flex;
@@ -219,22 +304,60 @@
 
     line-height:
       1.4;
+
+
+    a {
+      color:
+        var(--color-primary);
+
+      font-weight:
+        700;
+
+      text-decoration:
+        none;
+
+      transition:
+        color var(--transition-fast);
+
+
+      &:hover {
+        color:
+          var(--color-primary-hover);
+      }
+    }
   }
 }
 
 
+/* =========================================================
+   GAV'S NEXUS GUARANTEE
+   ---------------------------------------------------------
+   Uses guaranteeT.png as a mask so it inherits the same red.
+   ========================================================= */
+
 .guarantee {
-  width:
-    auto;
+  display: block;
 
-  height:
-    52px;
+  width: 70px;
+  height: 60px;
 
-  object-fit:
-    contain;
+  flex-shrink: 0;
+
+  background:
+    var(--color-primary);
+
+  mask:
+    url('/assets/pics/guaranteeT.png')
+    center / contain
+    no-repeat;
+
+  -webkit-mask:
+    url('/assets/pics/guaranteeT.png')
+    center / contain
+    no-repeat;
 
   opacity:
-    0.75;
+    0.8;
 
   transition:
     opacity var(--transition-fast),
@@ -259,7 +382,8 @@
 
   .site-footer {
     padding:
-      2.5rem 1.25rem 1.5rem;
+      2.5rem 1.25rem
+      1.5rem;
   }
 
 
@@ -280,10 +404,25 @@
 
   .footer-logo {
     width:
-      56px;
+      52px;
 
     height:
-      56px;
+      52px;
+  }
+
+
+  .footer-brand-text {
+
+    .footer-name {
+      font-size:
+        1.7rem;
+    }
+
+
+    .footer-owner {
+      font-size:
+        0.7rem;
+    }
   }
 
 
@@ -303,8 +442,74 @@
 
 
   .guarantee {
+    width:
+      62px;
+
+    height:
+      52px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .site-footer {
+    padding-inline:
+      1rem;
+  }
+
+
+  .footer-brand {
+    gap:
+      0.75rem;
+  }
+
+
+  .footer-logo {
+    width:
+      46px;
+
     height:
       46px;
   }
 
+
+  .footer-brand-text {
+
+    .footer-name {
+      font-size:
+        1.5rem;
+    }
+  }
+
+
+  .footer-links {
+
+    a {
+      font-size:
+        0.8rem;
+    }
+  }
+
+
+  .footer-bottom {
+
+    p {
+      font-size:
+        0.72rem;
+    }
+  }
+
+
+  .guarantee {
+    width:
+      58px;
+
+    height:
+      48px;
+  }
 }

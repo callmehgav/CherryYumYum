@@ -42,7 +42,6 @@ export class ContactMeComponent {
     }
 
     this.loading = true;
-    this.trackButtonClick('Contact Send');
 
     this.http.post(`${environment.apiUrl}/contact`, this.formData)
       .subscribe({
@@ -59,13 +58,4 @@ export class ContactMeComponent {
       });
   }
 
-  trackButtonClick(label: string) {
-    this.http.post(`${environment.apiUrl}/insights/track`, {
-      eventType: "ButtonClick",
-      label: label
-    }).subscribe({
-      next: () => console.log(`Button click tracked: ${label}`),
-      error: err => console.error('Button click tracking error:', err)
-    });
-  }
 }

@@ -1,17 +1,80 @@
 /* =========================================================
    CHERRY YUM YUM
-   SOCIAL LINKS
+   SOCIAL PHOTO GALLERY
    ========================================================= */
 
-.link-tree,
 .links-section {
   position: relative;
 
-  padding:
-    clamp(4rem, 8vw, 7rem)
-    var(--container-padding);
+  width: min(100% - 2rem, 1120px);
 
-  background: transparent;
+  margin: 3rem auto;
+
+  padding:
+    clamp(1rem, 3vw, 1.5rem);
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(221, 21, 34, 0.05),
+      transparent 35%
+    ),
+    var(--color-surface-muted);
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius:
+    var(--radius-xl);
+
+  box-shadow:
+    var(--shadow-md);
+}
+
+
+.links-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: -110px;
+  right: -80px;
+
+  width: 250px;
+  height: 250px;
+
+  background:
+    rgba(221, 21, 34, 0.08);
+
+  border-radius:
+    50%;
+
+  pointer-events:
+    none;
+}
+
+
+.links-section::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -70px;
+  left: -50px;
+
+  width: 170px;
+  height: 170px;
+
+  border:
+    1px solid rgba(221, 21, 34, 0.18);
+
+  border-radius:
+    50%;
+
+  pointer-events:
+    none;
 }
 
 
@@ -20,10 +83,29 @@
    ========================================================= */
 
 .links-shell {
-  width: 100%;
-  max-width: 950px;
+  position: relative;
 
-  margin-inline: auto;
+  z-index: 1;
+
+  width: 100%;
+
+  margin-inline:
+    auto;
+
+  padding:
+    clamp(1.5rem, 4vw, 2.75rem);
+
+  background:
+    rgba(255, 248, 237, 0.8);
+
+  border:
+    1.5px solid var(--color-primary);
+
+  border-radius:
+    var(--radius-lg);
+
+  backdrop-filter:
+    blur(6px);
 }
 
 
@@ -32,173 +114,106 @@
    ========================================================= */
 
 .links-header {
-  max-width: 620px;
+  max-width:
+    660px;
 
   margin-bottom:
-    clamp(2rem, 5vw, 3.5rem);
+    clamp(2rem, 5vw, 3rem);
+}
 
 
-  .eyebrow {
-    margin-bottom: 0.5rem;
-  }
+.links-header .eyebrow {
+  margin-bottom:
+    0.5rem;
+}
 
 
-  h2 {
-    margin-bottom: 1rem;
+.links-header h2 {
+  margin-bottom:
+    1rem;
 
-    color:
-      var(--color-primary);
-  }
+  color:
+    var(--color-primary);
+}
 
 
-  p {
-    max-width: 520px;
+.links-header p {
+  max-width:
+    540px;
 
-    color:
-      var(--color-text-muted);
-  }
+  color:
+    var(--color-text-muted);
 }
 
 
 /* =========================================================
-   GRID
+   GALLERY
+   ---------------------------------------------------------
+   TOP:
+   Instagram | YouTube
+   Instagram | Tip
+
+   BOTTOM — REVERSED:
+   Facebook  | Bandcamp
+   Booking   | Bandcamp
    ========================================================= */
 
-.links-grid {
+.social-gallery {
   display: grid;
 
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 
-  gap: 1rem;
+  grid-template-areas:
+    "instagram youtube"
+    "instagram tip"
+    "facebook bandcamp"
+    "booking bandcamp";
+
+  /*
+   * Equal row heights are important here.
+   * They make the two mirrored gallery blocks lock together.
+   */
+  grid-template-rows:
+    repeat(4, 235px);
+
+  gap:
+    0.75rem;
 }
 
 
 /* =========================================================
-   LINK CARD
+   GALLERY CARDS
    ========================================================= */
 
-.link-card {
+.gallery-card {
   position: relative;
 
-  display: grid;
+  display: flex;
 
-  grid-template-columns:
-    auto minmax(0, 1fr) auto;
+  align-items:
+    flex-end;
 
-  align-items: center;
+  width:
+    100%;
 
-  gap: 1rem;
+  min-width:
+    0;
 
-  min-height: 92px;
+  min-height:
+    0;
 
-  padding:
-    1rem 1.25rem;
+  overflow:
+    hidden;
 
-  overflow: hidden;
+  isolation:
+    isolate;
 
   color:
-    var(--color-primary);
+    var(--color-cream);
 
-  background:
-    rgba(255, 248, 237, 0.72);
-
-  border:
-    1.5px solid var(--color-primary);
-
-  border-radius:
-    var(--radius-lg);
-
-  box-shadow:
-    var(--shadow-sm);
-
-  isolation: isolate;
-
-  transition:
-    transform var(--transition-normal),
-    background var(--transition-normal),
-    color var(--transition-normal),
-    box-shadow var(--transition-normal);
-
-
-  /*
-   * Normal cards get the Cherry Yum Yum
-   * red slide-up treatment.
-   */
-  &::before {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    z-index: 0;
-
-    background:
-      var(--color-primary);
-
-    transform:
-      translateY(102%);
-
-    transition:
-      transform var(--transition-normal);
-  }
-
-
-  /*
-   * Keep card content above pseudo-elements.
-   */
-  > * {
-    position: relative;
-
-    z-index: 1;
-  }
-
-
-  &:hover {
-    color:
-      var(--color-cream);
-
-    transform:
-      translateY(-3px);
-
-    box-shadow:
-      0 12px 30px
-      rgba(221, 21, 34, 0.14);
-
-
-    &::before {
-      transform:
-        translateY(0);
-    }
-
-
-    .link-icon {
-      background:
-        var(--color-cream);
-
-      border-color:
-        var(--color-cream);
-    }
-
-
-    .link-arrow {
-      transform:
-        translate(3px, -3px);
-    }
-  }
-}
-
-
-/* =========================================================
-   IMAGE CARDS
-   ---------------------------------------------------------
-   Instagram / YouTube / Venmo / Bandcamp
-   ========================================================= */
-
-.link-card.image-card {
   background-color:
-    var(--color-surface);
+    #5a2628;
 
   background-size:
     cover;
@@ -209,70 +224,185 @@
   background-repeat:
     no-repeat;
 
-  color:
-    var(--color-cream);
+  border:
+    1.5px solid var(--color-primary);
+
+  border-radius:
+    var(--radius-lg);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
 
 
-  /*
-   * Instead of sliding solid red over the image,
-   * this becomes a permanent dark/red wash.
-   */
-  &::before {
-    transform:
-      none;
+/*
+ * Very subtle vintage warmth over photography.
+ */
+.gallery-card::before {
+  content: "";
 
-    background:
-      linear-gradient(
-        90deg,
-        rgba(54, 22, 21, 0.84) 0%,
-        rgba(91, 26, 29, 0.67) 55%,
-        rgba(221, 21, 34, 0.28) 100%
-      );
+  position: absolute;
 
-    transition:
-      background var(--transition-normal);
-  }
+  inset: 0;
 
+  z-index:
+    -2;
 
-  .link-copy {
+  background:
+    rgba(221, 21, 34, 0.04);
 
-    strong {
-      color:
-        var(--color-cream);
-    }
+  mix-blend-mode:
+    multiply;
+
+  pointer-events:
+    none;
+}
 
 
-    small {
-      color:
-        var(--color-cream);
+.gallery-card:hover {
+  transform:
+    translateY(-4px);
 
-      opacity:
-        0.85;
-    }
-  }
-
-
-  .link-arrow {
-    color:
-      var(--color-cream);
-  }
+  box-shadow:
+    0 18px 40px
+    rgba(87, 28, 30, 0.18);
+}
 
 
-  &:hover {
+.gallery-card:hover .gallery-overlay {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(25, 12, 10, 0.01) 10%,
+      rgba(66, 19, 22, 0.28) 52%,
+      rgba(116, 19, 25, 0.92) 100%
+    );
+}
 
-    &::before {
-      transform:
-        none;
 
-      background:
-        linear-gradient(
-          90deg,
-          rgba(116, 21, 26, 0.88) 0%,
-          rgba(170, 20, 29, 0.72) 55%,
-          rgba(221, 21, 34, 0.48) 100%
-        );
-    }
-  }
+.gallery-card:hover .gallery-arrow {
+  transform:
+    translate(4px, -4px);
+}
+
+
+.gallery-card:hover .gallery-content {
+  transform:
+    translateY(-3px);
+}
+
+
+/* =========================================================
+   INDIVIDUAL GALLERY PLACEMENT
+   ========================================================= */
+
+.gallery-instagram {
+  grid-area:
+    instagram;
+
+  background-position:
+    center;
+}
+
+
+.gallery-youtube {
+  grid-area:
+    youtube;
+
+  background-position:
+    center;
+}
+
+
+.gallery-tip {
+  grid-area:
+    tip;
+
+  background-position:
+    center;
+}
+
+
+.gallery-facebook {
+  grid-area:
+    facebook;
+
+  background-position:
+    center;
+}
+
+
+.gallery-booking {
+  grid-area:
+    booking;
+
+  background-position:
+    center;
+}
+
+
+.gallery-bandcamp {
+  grid-area:
+    bandcamp;
+
+  background-position:
+    center;
+}
+
+
+/* =========================================================
+   PHOTO OVERLAY
+   ========================================================= */
+
+.gallery-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index:
+    -1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(25, 12, 10, 0.02) 10%,
+      rgba(47, 18, 18, 0.22) 50%,
+      rgba(72, 17, 21, 0.9) 100%
+    );
+
+  transition:
+    background var(--transition-normal);
+}
+
+
+/* =========================================================
+   GALLERY CONTENT
+   ========================================================= */
+
+.gallery-content {
+  display: grid;
+
+  grid-template-columns:
+    auto minmax(0, 1fr) auto;
+
+  align-items:
+    end;
+
+  gap:
+    0.85rem;
+
+  width:
+    100%;
+
+  padding:
+    clamp(1rem, 2.5vw, 1.5rem);
+
+  transition:
+    transform var(--transition-normal);
 }
 
 
@@ -280,19 +410,23 @@
    ICON
    ========================================================= */
 
-.link-icon {
+.gallery-icon {
   display: flex;
 
-  align-items: center;
-  justify-content: center;
+  align-items:
+    center;
 
-  width: 52px;
-  height: 52px;
+  justify-content:
+    center;
 
-  flex:
-    0 0 52px;
+  width:
+    48px;
 
-  overflow: hidden;
+  height:
+    48px;
+
+  flex-shrink:
+    0;
 
   color:
     var(--color-primary);
@@ -301,38 +435,36 @@
     var(--color-cream);
 
   border:
-    1px solid var(--color-border);
+    1px solid rgba(255, 255, 255, 0.5);
 
   border-radius:
     50%;
-
-  transition:
-    background var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
+}
 
 
-  /*
-   * Explicit constraints prevent SVG/PNG icons
-   * from blowing up to their intrinsic dimensions.
-   */
-  img {
-    display: block;
+.gallery-icon img {
+  display:
+    block;
 
-    width: 25px;
-    height: 25px;
+  width:
+    23px;
 
-    max-width: 25px;
-    max-height: 25px;
+  height:
+    23px;
 
-    object-fit:
-      contain;
-  }
+  max-width:
+    23px;
+
+  max-height:
+    23px;
+
+  object-fit:
+    contain;
 }
 
 
 /* =========================================================
-   TEXT-BASED ICONS
+   TEXT ICONS
    ========================================================= */
 
 .text-icon {
@@ -341,11 +473,14 @@
     "Times New Roman",
     serif;
 
-  font-size: 1.5rem;
+  font-size:
+    1.4rem;
 
-  font-weight: 700;
+  font-weight:
+    700;
 
-  line-height: 1;
+  line-height:
+    1;
 
   color:
     var(--color-primary);
@@ -370,66 +505,72 @@
    COPY
    ========================================================= */
 
-.link-copy {
-  display: flex;
+.gallery-copy {
+  display:
+    flex;
 
-  flex-direction: column;
+  flex-direction:
+    column;
 
-  gap: 0.15rem;
+  gap:
+    0.15rem;
 
-  min-width: 0;
-
-
-  strong {
-    overflow: hidden;
-
-    color:
-      inherit;
-
-    font-family:
-      var(--font-primary);
-
-    font-size:
-      1.05rem;
-
-    font-weight:
-      700;
-
-    line-height:
-      1.25;
-
-    text-overflow:
-      ellipsis;
-
-    white-space:
-      nowrap;
-  }
+  min-width:
+    0;
+}
 
 
-  small {
-    overflow: hidden;
+.gallery-kicker {
+  color:
+    rgba(255, 248, 237, 0.72);
 
-    color:
-      inherit;
+  font-family:
+    var(--font-primary);
 
-    opacity:
-      0.7;
+  font-size:
+    0.65rem;
 
-    font-family:
-      var(--font-primary);
+  font-weight:
+    700;
 
-    font-size:
-      0.8rem;
+  letter-spacing:
+    0.12em;
 
-    line-height:
-      1.35;
+  text-transform:
+    uppercase;
+}
 
-    text-overflow:
-      ellipsis;
 
-    white-space:
-      nowrap;
-  }
+.gallery-copy strong {
+  color:
+    var(--color-cream);
+
+  font-family:
+    var(--font-display);
+
+  font-size:
+    clamp(1.45rem, 2.4vw, 2.2rem);
+
+  line-height:
+    1;
+}
+
+
+.gallery-copy small {
+  max-width:
+    360px;
+
+  color:
+    rgba(255, 248, 237, 0.84);
+
+  font-family:
+    var(--font-primary);
+
+  font-size:
+    0.76rem;
+
+  line-height:
+    1.35;
 }
 
 
@@ -437,20 +578,18 @@
    ARROW
    ========================================================= */
 
-.link-arrow {
-  display: flex;
+.gallery-arrow {
+  align-self:
+    center;
 
-  align-items: center;
-  justify-content: center;
+  color:
+    var(--color-cream);
 
   font-size:
-    1.4rem;
+    1.45rem;
 
   line-height:
     1;
-
-  flex-shrink:
-    0;
 
   transition:
     transform var(--transition-fast);
@@ -462,9 +601,11 @@
    ========================================================= */
 
 .links-footer {
-  display: flex;
+  display:
+    flex;
 
-  justify-content: center;
+  justify-content:
+    center;
 
   margin-top:
     clamp(2.5rem, 5vw, 4rem);
@@ -472,10 +613,14 @@
 
 
 .links-logo {
-  display: block;
+  display:
+    block;
 
-  width: 100px;
-  height: 100px;
+  width:
+    100px;
+
+  height:
+    100px;
 
   object-fit:
     contain;
@@ -486,14 +631,81 @@
 
 
 /* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .social-gallery {
+    grid-template-rows:
+      repeat(4, 200px);
+
+    gap:
+      0.65rem;
+  }
+
+
+  .gallery-content {
+    gap:
+      0.65rem;
+
+    padding:
+      1rem;
+  }
+
+
+  .gallery-icon {
+    width:
+      44px;
+
+    height:
+      44px;
+  }
+
+
+  .gallery-icon img {
+    width:
+      21px;
+
+    height:
+      21px;
+  }
+
+
+  .gallery-copy strong {
+    font-size:
+      1.45rem;
+  }
+
+
+  .gallery-copy small {
+    font-size:
+      0.7rem;
+  }
+}
+
+
+/* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 700px) {
 
   .links-section {
+    width:
+      calc(100% - 2rem);
+
+    margin:
+      2rem auto;
+
     padding:
-      3.5rem 1.25rem;
+      0.75rem;
+  }
+
+
+  .links-shell {
+    padding:
+      1.25rem;
   }
 
 
@@ -503,75 +715,68 @@
   }
 
 
-  .links-grid {
+  /*
+   * Collapse into one clean photo stack.
+   */
+  .social-gallery {
     grid-template-columns:
       1fr;
-  }
 
+    grid-template-areas:
+      "instagram"
+      "youtube"
+      "tip"
+      "facebook"
+      "booking"
+      "bandcamp";
 
-  .link-card {
-    min-height:
-      82px;
+    grid-template-rows:
+      none;
 
-    padding:
-      0.85rem 1rem;
+    grid-auto-rows:
+      300px;
 
     gap:
-      0.85rem;
+      0.75rem;
   }
 
 
-  .link-icon {
+  .gallery-content {
+    gap:
+      0.75rem;
+
+    padding:
+      1.1rem;
+  }
+
+
+  .gallery-icon {
     width:
       46px;
 
     height:
       46px;
-
-    flex-basis:
-      46px;
-
-
-    img {
-      width:
-        22px;
-
-      height:
-        22px;
-
-      max-width:
-        22px;
-
-      max-height:
-        22px;
-    }
   }
 
 
-  .text-icon {
+  .gallery-icon img {
+    width:
+      22px;
+
+    height:
+      22px;
+  }
+
+
+  .gallery-copy strong {
     font-size:
-      1.3rem;
+      1.7rem;
   }
 
 
-  .link-copy {
-
-    strong {
-      font-size:
-        1rem;
-    }
-
-
-    small {
-      font-size:
-        0.75rem;
-    }
-  }
-
-
-  .link-arrow {
+  .gallery-copy small {
     font-size:
-      1.2rem;
+      0.75rem;
   }
 
 
@@ -589,50 +794,46 @@
    VERY SMALL PHONES
    ========================================================= */
 
-@media (max-width: 380px) {
+@media (max-width: 400px) {
 
   .links-section {
-    padding-inline:
+    width:
+      calc(100% - 1rem);
+
+    padding:
+      0.5rem;
+  }
+
+
+  .links-shell {
+    padding:
       1rem;
   }
 
 
-  .link-card {
+  .social-gallery {
+    grid-auto-rows:
+      270px;
+  }
+
+
+  .gallery-content {
     grid-template-columns:
-      auto minmax(0, 1fr) auto;
+      auto minmax(0, 1fr);
 
-    padding:
-      0.75rem;
-
-    gap:
-      0.7rem;
+    align-items:
+      end;
   }
 
 
-  .link-icon {
-    width:
-      42px;
-
-    height:
-      42px;
-
-    flex-basis:
-      42px;
+  .gallery-arrow {
+    display:
+      none;
   }
 
 
-  .link-copy {
-
-    strong {
-      font-size:
-        0.95rem;
-    }
-
-
-    small {
-      font-size:
-        0.7rem;
-    }
+  .gallery-copy strong {
+    font-size:
+      1.5rem;
   }
-
 }

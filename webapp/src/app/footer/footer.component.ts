@@ -14,14 +14,5 @@ export class FooterComponent {
 
   constructor(private http: HttpClient) {}
 
-  trackButtonClick(label: string) {
-    this.http.post(environment.apiUrl + '/insights/track', { 
-      eventType: "ButtonClick",
-      label: label +" Link"
-    }).subscribe({
-      next: () => console.log(`Button click tracked: ${label}`),
-      error: err => console.error('Button click tracking error:', err)
-    });
-  }
 }
 
